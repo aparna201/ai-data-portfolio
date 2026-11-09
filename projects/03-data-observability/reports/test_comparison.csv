@@ -1,0 +1,5 @@
+method,threshold,precision,recall,f1,false_alarms_per_series_month,tp,fp,fn
+isolation_forest,0.134,1.0,1.0,1.0,0.0,24,0,0
+iqr,2.0,1.0,0.958,0.979,0.0,23,0,1
+robust_z,3.5,0.958,0.958,0.958,0.038,23,1,1
+zscore,3.0,1.0,0.917,0.957,0.0,22,0,2

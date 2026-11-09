@@ -1,0 +1,9 @@
+{
+  "winner": "isolation_forest",
+  "thresholds": {
+    "zscore": 3.0,
+    "robust_z": 3.5,
+    "iqr": 2.0,
+    "isolation_forest": 0.134
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "tariff_usd_per_kwh": 0.12,
+  "note": "assumption, not a measured rate",
+  "fallback_hours": 13,
+  "test_hours": 407
+}

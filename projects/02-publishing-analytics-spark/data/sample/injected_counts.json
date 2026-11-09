@@ -1,0 +1,9 @@
+{
+  "good_rows": 444,
+  "duplicates": 13,
+  "missing_platform": 4,
+  "negative_messages": 2,
+  "bad_timestamp": 2,
+  "invalid_rows": 8,
+  "rows_in": 465
+}

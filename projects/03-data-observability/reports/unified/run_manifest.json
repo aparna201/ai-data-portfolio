@@ -1,0 +1,16 @@
+{
+  "run_at": "2026-11-08T08:02:53.128754+00:00",
+  "dq_rows_in": 38083,
+  "dq_rows_rejected": 1288,
+  "dq_rows_clean": 36795,
+  "lineage_datasets": 268,
+  "monitored_datasets": 147,
+  "fact_rows": 36800,
+  "datasets": 400,
+  "critical_datasets": 162,
+  "reconciliation": {
+    "checks_match": true,
+    "passes_match": true
+  },
+  "status": "success"
+}

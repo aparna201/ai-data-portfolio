@@ -1,0 +1,18 @@
+{
+  "raw_rows": 300403,
+  "csv_mb": 17.6,
+  "shuffle_partition_seconds": {
+    "2": 4.31,
+    "4": 4.25,
+    "8": 4.9,
+    "32": 4.56,
+    "200": 13.37
+  },
+  "chosen_shuffle_partitions": 4,
+  "monthly_question_seconds": {
+    "from_raw": 1.29,
+    "from_daily_table": 0.86,
+    "speedup_x": 1.5
+  },
+  "note": "best of 3 runs, local 2-core Spark, synthetic data"
+}

@@ -1,0 +1,12 @@
+{
+  "dq_rows_good": 36795,
+  "lineage_rows_good": 536,
+  "monitor_rows_good": 147,
+  "dq_duplicates": 736,
+  "dq_orphans": 368,
+  "dq_bad_status": 184,
+  "lineage_invalid": 2,
+  "monitor_duplicates": 3,
+  "days": 92,
+  "critical_datasets": 162
+}

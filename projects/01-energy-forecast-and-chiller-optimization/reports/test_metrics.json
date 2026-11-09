@@ -1,0 +1,21 @@
+{
+  "winner": "gradient_boosting",
+  "scores": {
+    "gradient_boosting": {
+      "mae_kw": 62.108248528831204,
+      "rmse_kw": 78.87385664022383,
+      "mape_pct": 5.9944197046661225
+    },
+    "same_hour_yesterday": {
+      "mae_kw": 133.3987714987715,
+      "rmse_kw": 177.77608925709868,
+      "mape_pct": 13.062100704539601
+    },
+    "same_hour_last_week": {
+      "mae_kw": 92.34324324324324,
+      "rmse_kw": 115.68192868412345,
+      "mape_pct": 8.941848466119607
+    }
+  },
+  "mae_gain_vs_best_baseline_pct": 32.7
+}

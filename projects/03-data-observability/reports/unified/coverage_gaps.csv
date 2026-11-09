@@ -1,0 +1,114 @@
+month,dataset_id,domain,missing
+2026-10,DS0014,card,monitoring
+2026-10,DS0015,card,lineage
+2026-10,DS0028,card,monitoring
+2026-10,DS0032,card,monitoring
+2026-10,DS0047,card,"lineage, monitoring"
+2026-10,DS0053,card,quality
+2026-10,DS0069,card,monitoring
+2026-10,DS0082,card,"quality, monitoring"
+2026-10,DS0088,card,monitoring
+2026-10,DS0095,card,monitoring
+2026-10,DS0101,card,monitoring
+2026-10,DS0115,card,monitoring
+2026-10,DS0129,card,monitoring
+2026-10,DS0130,card,lineage
+2026-10,DS0199,card,"quality, monitoring"
+2026-10,DS0200,card,monitoring
+2026-10,DS0227,card,quality
+2026-10,DS0234,card,monitoring
+2026-10,DS0244,card,quality
+2026-10,DS0259,card,"lineage, monitoring"
+2026-10,DS0269,card,"lineage, monitoring"
+2026-10,DS0274,card,monitoring
+2026-10,DS0297,card,lineage
+2026-10,DS0339,card,"lineage, monitoring"
+2026-10,DS0345,card,monitoring
+2026-10,DS0358,card,"quality, monitoring"
+2026-10,DS0359,card,quality
+2026-10,DS0372,card,monitoring
+2026-10,DS0380,card,quality
+2026-10,DS0384,card,quality
+2026-10,DS0388,card,"quality, monitoring"
+2026-10,DS0397,card,quality
+2026-10,DS0001,commercial,monitoring
+2026-10,DS0030,commercial,"quality, monitoring"
+2026-10,DS0056,commercial,"quality, monitoring"
+2026-10,DS0068,commercial,monitoring
+2026-10,DS0073,commercial,monitoring
+2026-10,DS0084,commercial,"quality, monitoring"
+2026-10,DS0103,commercial,monitoring
+2026-10,DS0120,commercial,monitoring
+2026-10,DS0132,commercial,"quality, monitoring"
+2026-10,DS0134,commercial,monitoring
+2026-10,DS0144,commercial,monitoring
+2026-10,DS0163,commercial,quality
+2026-10,DS0164,commercial,monitoring
+2026-10,DS0171,commercial,monitoring
+2026-10,DS0183,commercial,monitoring
+2026-10,DS0203,commercial,monitoring
+2026-10,DS0270,commercial,"quality, monitoring"
+2026-10,DS0276,commercial,"quality, monitoring"
+2026-10,DS0319,commercial,"quality, monitoring"
+2026-10,DS0344,commercial,"quality, monitoring"
+2026-10,DS0350,commercial,monitoring
+2026-10,DS0351,commercial,lineage
+2026-10,DS0365,commercial,monitoring
+2026-10,DS0005,retail,monitoring
+2026-10,DS0021,retail,"quality, monitoring"
+2026-10,DS0034,retail,lineage
+2026-10,DS0038,retail,quality
+2026-10,DS0070,retail,monitoring
+2026-10,DS0121,retail,"quality, monitoring"
+2026-10,DS0122,retail,quality
+2026-10,DS0131,retail,"lineage, quality, monitoring"
+2026-10,DS0161,retail,"lineage, monitoring"
+2026-10,DS0167,retail,"quality, monitoring"
+2026-10,DS0172,retail,lineage
+2026-10,DS0182,retail,monitoring
+2026-10,DS0207,retail,monitoring
+2026-10,DS0228,retail,"quality, monitoring"
+2026-10,DS0253,retail,"quality, monitoring"
+2026-10,DS0273,retail,lineage
+2026-10,DS0280,retail,lineage
+2026-10,DS0291,retail,quality
+2026-10,DS0298,retail,lineage
+2026-10,DS0329,retail,quality
+2026-10,DS0341,retail,monitoring
+2026-10,DS0369,retail,monitoring
+2026-10,DS0381,retail,quality
+2026-10,DS0004,risk,"lineage, quality"
+2026-10,DS0035,risk,"lineage, quality, monitoring"
+2026-10,DS0044,risk,"quality, monitoring"
+2026-10,DS0048,risk,monitoring
+2026-10,DS0052,risk,quality
+2026-10,DS0066,risk,lineage
+2026-10,DS0067,risk,monitoring
+2026-10,DS0075,risk,"quality, monitoring"
+2026-10,DS0081,risk,quality
+2026-10,DS0104,risk,quality
+2026-10,DS0112,risk,monitoring
+2026-10,DS0165,risk,lineage
+2026-10,DS0169,risk,monitoring
+2026-10,DS0188,risk,quality
+2026-10,DS0197,risk,monitoring
+2026-10,DS0206,risk,lineage
+2026-10,DS0219,risk,monitoring
+2026-10,DS0229,risk,"lineage, quality, monitoring"
+2026-10,DS0236,risk,monitoring
+2026-10,DS0243,risk,"quality, monitoring"
+2026-10,DS0282,risk,quality
+2026-10,DS0286,risk,"quality, monitoring"
+2026-10,DS0288,risk,"lineage, monitoring"
+2026-10,DS0293,risk,monitoring
+2026-10,DS0307,risk,monitoring
+2026-10,DS0317,risk,quality
+2026-10,DS0325,risk,quality
+2026-10,DS0340,risk,monitoring
+2026-10,DS0366,risk,monitoring
+2026-10,DS0368,risk,monitoring
+2026-10,DS0374,risk,"quality, monitoring"
+2026-10,DS0378,risk,monitoring
+2026-10,DS0385,risk,quality
+2026-10,DS0390,risk,quality
+2026-10,DS0396,risk,quality

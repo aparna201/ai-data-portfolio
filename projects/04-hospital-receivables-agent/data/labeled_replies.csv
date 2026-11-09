@@ -1,0 +1,41 @@
+text,intent
+"Sorry for the delay. We will pay on 25 November.",paying_soon
+"Our finance head has approved it, payment will be made on 30 November.",paying_soon
+"We will clear this bill by the end of this month.",paying_soon
+"Funds will be released next Friday, we will transfer on 20 November.",paying_soon
+"Thanks for the reminder, will look into it.",silent_ack
+"Noted. Received your email.",silent_ack
+"We acknowledge your message and will get back.",silent_ack
+"Got it, checking internally.",silent_ack
+"This bill amount is incorrect, please recheck.",disputing
+"My employee never had this treatment. We dispute this charge.",disputing
+"The invoice does not match our authorisation letter.",disputing
+"We were overcharged on this bill, kindly explain.",disputing
+"This is unacceptable. Stop sending these emails.",angry
+"I refuse to pay and will complain to your management.",angry
+"Stop emailing us. We are fed up with these reminders.",angry
+"This is outrageous harassment and we will take legal advice.",angry
+"We already paid this on 12 September, UTR attached.",already_paid
+"Payment was made last week through bank transfer.",already_paid
+"Payment done on 3 November, please check your account.",already_paid
+"The amount has been paid, receipt enclosed.",already_paid
+"Our insurer is processing the claim for this bill.",insurance_pending
+"The TPA has the file and approval is awaited.",insurance_pending
+"Claim is with the insurance company, please wait.",insurance_pending
+"The employee health cover is handling it, claim has been filed.",insurance_pending
+"We cannot pay in full right now. Can we pay in instalments?",needs_payment_plan
+"Please allow more time or a waiver, the amount is high.",needs_payment_plan
+"Request a payment plan in three parts.",needs_payment_plan
+"Unable to pay the full amount at once, kindly advise options.",needs_payment_plan
+"I am not the patient, you have the wrong person.",wrong_contact
+"The patient has passed away. Please remove this address.",wrong_contact
+"This person has left the company, wrong contact.",wrong_contact
+"Wrong address, we are not the payer for this patient.",wrong_contact
+"Who is this regarding?",unclear
+"Please call me.",unclear
+"What is this about?",unclear
+"Forwarded to the concerned team.",unclear
+"Our accounts head is travelling, he can look at this after Diwali.",silent_ack
+"We will settle this once the audit completes, hopefully soon.",unclear
+"Kindly share the bill copy again, the earlier one did not open.",unclear
+"Can you confirm the bank details for the transfer?",unclear

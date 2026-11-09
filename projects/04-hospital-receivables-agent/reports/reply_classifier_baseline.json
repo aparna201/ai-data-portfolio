@@ -1,0 +1,33 @@
+{
+  "n": 40,
+  "accuracy": 0.925,
+  "needs_human_recall": 0.958,
+  "per_intent_recall": {
+    "paying_soon": 1.0,
+    "silent_ack": 0.6,
+    "disputing": 1.0,
+    "angry": 1.0,
+    "already_paid": 0.75,
+    "unclear": 1.0,
+    "insurance_pending": 1.0,
+    "needs_payment_plan": 1.0,
+    "wrong_contact": 1.0
+  },
+  "errors": [
+    [
+      "Got it, checking internally.",
+      "silent_ack",
+      "unclear"
+    ],
+    [
+      "The amount has been paid, receipt enclosed.",
+      "already_paid",
+      "unclear"
+    ],
+    [
+      "Our accounts head is travelling, he can look at this after Diwali.",
+      "silent_ack",
+      "unclear"
+    ]
+  ]
+}

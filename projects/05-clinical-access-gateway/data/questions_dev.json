@@ -1,0 +1,265 @@
+[
+ {
+  "role": "billing",
+  "question": "how many unpaid invoices",
+  "table": "invoices",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "total unpaid invoices",
+  "table": "invoices",
+  "aggregate": "sum",
+  "sum_column": "amount",
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "how many paid invoices",
+  "table": "invoices",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "paid"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "list unpaid bills",
+  "table": "invoices",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "what is the total amount of paid invoices",
+  "table": "invoices",
+  "aggregate": "sum",
+  "sum_column": "amount",
+  "filters": [
+   [
+    "status",
+    "=",
+    "paid"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "list appointments for Dr Rao",
+  "table": "appointments",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "doctor",
+    "=",
+    "Dr. Rao"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "how many appointments are cancelled",
+  "table": "appointments",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "cancelled"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "show scheduled appointments",
+  "table": "appointments",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "scheduled"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "appointments on 2026-11-09",
+  "table": "appointments",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "appt_date",
+    "=",
+    "2026-11-09"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "how many appointments does Dr Iyer have",
+  "table": "appointments",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "doctor",
+    "=",
+    "Dr. Iyer"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "list patients from Vizag",
+  "table": "patients",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "city",
+    "=",
+    "Vizag"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "how many patients in Hyderabad",
+  "table": "patients",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "city",
+    "=",
+    "Hyderabad"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "list patients",
+  "table": "patients",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": []
+ },
+ {
+  "role": "front_desk",
+  "question": "how many patients are there",
+  "table": "patients",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": []
+ },
+ {
+  "role": "doctor",
+  "question": "completed appointments with Dr Iyer",
+  "table": "appointments",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "completed"
+   ],
+   [
+    "doctor",
+    "=",
+    "Dr. Iyer"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "how many invoices",
+  "table": "invoices",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": []
+ },
+ {
+  "role": "billing",
+  "question": "which bills are still unpaid",
+  "table": "invoices",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "number of scheduled appointments for Dr Rao",
+  "table": "appointments",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "scheduled"
+   ],
+   [
+    "doctor",
+    "=",
+    "Dr. Rao"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "list patients whose city is Chennai",
+  "table": "patients",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "city",
+    "=",
+    "Chennai"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "show me the weather",
+  "refuse": true
+ }
+]

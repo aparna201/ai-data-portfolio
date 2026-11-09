@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.env
+outbox/
+results/
+warehouse/
+data/raw/
+spark-warehouse/
+metastore_db/
+derby.log
+*.db
+audit.jsonl
+report.md
+models/*.joblib
+node_modules/

@@ -1,0 +1,6 @@
+{
+  "name": "n8n-code-node-tests",
+  "private": true,
+  "description": "Only used to run agent1_aging_analyser.js outside n8n for parity testing",
+  "dependencies": { "luxon": "3.5.0" }
+}

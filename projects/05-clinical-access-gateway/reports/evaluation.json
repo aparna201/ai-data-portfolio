@@ -1,0 +1,86 @@
+{
+  "dev": {
+    "n": 20,
+    "plan_accuracy": 1.0,
+    "answer_accuracy": 1.0,
+    "misses": []
+  },
+  "test": {
+    "n": 20,
+    "plan_accuracy": 0.8,
+    "answer_accuracy": 0.8,
+    "misses": [
+      "who is booked with Dr Khan",
+      "what do patients owe",
+      "outstanding balance",
+      "who hasn't paid"
+    ]
+  },
+  "attacks": [
+    {
+      "attack": "role reads a table outside its policy",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "billing asks for a hidden column",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "hidden column used only in a filter",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "SQL in the operator",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "SQL in the filter column",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "SQL in a selected column",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "read the database's own catalogue",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "unsupported aggregate",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "sum over a hidden column",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "unknown role",
+      "expected": "denied",
+      "passed": true
+    },
+    {
+      "attack": "injection text as a value",
+      "expected": "harmless",
+      "passed": true
+    },
+    {
+      "attack": "huge row limit",
+      "expected": "capped",
+      "passed": true
+    },
+    {
+      "attack": "database contents unchanged after all attacks",
+      "expected": "same",
+      "passed": true
+    }
+  ]
+}

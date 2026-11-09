@@ -1,0 +1,4 @@
+month,files,messages,days,messages_per_day,files_per_day,messages_per_file,messages_mom_pct,files_mom_pct
+2026-08,116,4633349,31,149463.0,3.7,39943.0,,
+2026-09,143,6153826,30,205128.0,4.8,43034.0,37.2,29.7
+2026-10,185,8493838,31,273995.0,6.0,45913.0,33.6,25.0

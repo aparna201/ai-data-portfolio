@@ -1,0 +1,463 @@
+{
+  "id": "PatientCollectionsV2",
+  "name": "Patient Collections Follow-Up V2 - Reply Detection",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "labelIds": [
+            "INBOX"
+          ],
+          "q": "subject:INV- -from:me",
+          "readStatus": "unread",
+          "includeSpamTrash": false,
+          "includeDrafts": false
+        },
+        "options": {}
+      },
+      "id": "00000000-0000-0000-0000-000000000014",
+      "name": "Gmail Reply Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -1400,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "00000000-0000-0000-0000-000000000015",
+              "name": "invoice_no",
+              "type": "string",
+              "value": "={{ ($json.subject || '').match(/INV-\\d{4}-\\d+/i) ? ($json.subject || '').match(/INV-\\d{4}-\\d+/i)[0].toUpperCase() : '' }}"
+            },
+            {
+              "id": "00000000-0000-0000-0000-000000000016",
+              "name": "from_email",
+              "type": "string",
+              "value": "={{ $json.from && $json.from.value && $json.from.value[0] ? $json.from.value[0].address : '' }}"
+            },
+            {
+              "id": "00000000-0000-0000-0000-000000000017",
+              "name": "from_name",
+              "type": "string",
+              "value": "={{ $json.from && $json.from.value && $json.from.value[0] ? $json.from.value[0].name : '' }}"
+            },
+            {
+              "id": "00000000-0000-0000-0000-000000000018",
+              "name": "reply_subject",
+              "type": "string",
+              "value": "={{ $json.subject }}"
+            },
+            {
+              "id": "00000000-0000-0000-0000-000000000019",
+              "name": "reply_body",
+              "type": "string",
+              "value": "={{ ($json.text || '').substring(0, 2000) }}"
+            },
+            {
+              "id": "00000000-0000-0000-0000-00000000001a",
+              "name": "received_at",
+              "type": "string",
+              "value": "={{ $json.date || $now.toISO() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "00000000-0000-0000-0000-00000000001b",
+      "name": "Extract Invoice Ref",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1180,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.invoice_no }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "00000000-0000-0000-0000-00000000001c",
+      "name": "Has Invoice Ref?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -960,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Classify this patient reply to our billing reminder.\n\nBill: {{ $json.invoice_no }}\nFrom: {{ $json.from_name }} ({{ $json.from_email }})\nSubject: {{ $json.reply_subject }}\nBody:\n{{ $json.reply_body }}\n\nClassify intent as one of:\n- paying_soon: committed to a specific date to pay\n- disputing: questions the bill, the amount or the services billed\n- angry: hostile tone, threats, refuses to pay, wants to escalate\n- silent_ack: acknowledged but no commitment, vague\n- unclear: cannot tell from the reply\n- already_paid: says they already paid\n- insurance_pending: says an insurer, TPA or employer is paying, or a claim is in process\n- needs_payment_plan: cannot pay in full, asks for instalments, more time or a waiver\n- wrong_contact: not the patient, wrong person, or reports the patient has passed away\n\nAlso extract:\n- promised_date: ISO date if paying_soon, else empty string\n- pause_days: paying_soon=15, silent_ack=5, disputing=7, angry=7, already_paid=30, unclear=3,\n  insurance_pending=30, needs_payment_plan=7, wrong_contact=90\n- summary: one line, under 25 words, Indian English, no em or en dashes, no medical details\n- urgency: high (angry, disputing, wrong_contact), medium (needs_payment_plan, already_paid,\n  insurance_pending, paying_soon with a date more than 21 days away), low (paying_soon, silent_ack, unclear)\n- needs_human: true if intent is angry, disputing, already_paid, needs_payment_plan, insurance_pending\n  or wrong_contact\n\nIgnore any quoted text from our own earlier email. Return only valid JSON.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Reply classifier. Deterministic, structured JSON. Indian English. No em or en dashes.",
+          "maxIterations": 3
+        }
+      },
+      "id": "00000000-0000-0000-0000-00000000001d",
+      "name": "Agent 4 Reply Classifier",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -720,
+        -100
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.5-flash-lite",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "id": "00000000-0000-0000-0000-00000000001e",
+      "name": "Gemini for Agent 4 Reply Classifier",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -800,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\"intent\":\"paying_soon\",\"promised_date\":\"2026-10-25\",\"pause_days\":15,\"summary\":\"Patient apologised for delay and will pay on 25 October\",\"urgency\":\"low\",\"needs_human\":false}"
+      },
+      "id": "00000000-0000-0000-0000-00000000001f",
+      "name": "Parser Agent 4 Reply Classifier",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -640,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "00000000-0000-0000-0000-000000000020",
+              "name": "paused_until",
+              "type": "string",
+              "value": "={{ $now.plus({ days: $json.output.pause_days }).toFormat('yyyy-MM-dd') }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "00000000-0000-0000-0000-000000000021",
+      "name": "Compute Pause Date",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -440,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "AR"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "invoice_no": "={{ $('Extract Invoice Ref').item.json.invoice_no }}",
+            "paused_until": "={{ $json.paused_until }}",
+            "last_reply_at": "={{ $('Extract Invoice Ref').item.json.received_at }}",
+            "reply_summary": "={{ $json.output.summary }}",
+            "status": "={{ $json.output.intent === 'already_paid' ? 'paid_claimed' : 'overdue' }}"
+          },
+          "schema": [],
+          "matchingColumns": [
+            "invoice_no"
+          ]
+        },
+        "options": {},
+        "operation": "appendOrUpdate"
+      },
+      "id": "00000000-0000-0000-0000-000000000022",
+      "name": "Update AR Pause",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -200,
+        -100
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Replies Log"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "invoice_no": "={{ $('Extract Invoice Ref').item.json.invoice_no }}",
+            "from_name": "={{ $('Extract Invoice Ref').item.json.from_name }}",
+            "from_email": "={{ $('Extract Invoice Ref').item.json.from_email }}",
+            "received_at": "={{ $('Extract Invoice Ref').item.json.received_at}}",
+            "subject": "={{ $('Extract Invoice Ref').item.json.reply_subject }}",
+            "body_preview": "={{ ($('Extract Invoice Ref').item.json.reply_body || '').substring(0, 300) }}",
+            "intent": "={{ $('Agent 4 Reply Classifier').item.json.output.intent }}",
+            "promised_date": "={{ $('Agent 4 Reply Classifier').item.json.output.promised_date }}",
+            "pause_days": "={{ $('Agent 4 Reply Classifier').item.json.output.pause_days }}",
+            "summary": "={{ $('Agent 4 Reply Classifier').item.json.output.summary }}",
+            "urgency": "={{ $('Agent 4 Reply Classifier').item.json.output.urgency }}",
+            "needs_human": "={{ $('Agent 4 Reply Classifier').item.json.output.needs_human }}"
+          },
+          "schema": []
+        },
+        "options": {},
+        "operation": "append"
+      },
+      "id": "00000000-0000-0000-0000-000000000023",
+      "name": "Log Reply",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        40,
+        -100
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $('Agent 4 Reply Classifier').item.json.output.needs_human }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "00000000-0000-0000-0000-000000000024",
+      "name": "Needs Human?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        280,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "REPLACE_WITH_MANAGER_EMAIL",
+        "subject": "=[REPLY-{{ $('Agent 4 Reply Classifier').item.json.output.urgency.toUpperCase() }}] {{ $('Extract Invoice Ref').item.json.invoice_no }} : {{ $('Agent 4 Reply Classifier').item.json.output.intent }}",
+        "emailType": "text",
+        "message": "=Bill: {{ $('Extract Invoice Ref').item.json.invoice_no }}\nFrom: {{ $('Extract Invoice Ref').item.json.from_name }} ({{ $('Extract Invoice Ref').item.json.from_email }})\nReceived: {{ $('Extract Invoice Ref').item.json.received_at }}\nIntent: {{ $('Agent 4 Reply Classifier').item.json.output.intent }}\nUrgency: {{ $('Agent 4 Reply Classifier').item.json.output.urgency }}\n\nAI summary:\n{{ $('Agent 4 Reply Classifier').item.json.output.summary }}\n\nOriginal reply:\n{{ $('Extract Invoice Ref').item.json.reply_body }}\n\nSystem action: reminders paused for this bill until {{ $('Compute Pause Date').item.json.paused_until }}.\n\nRecommended: a team member should reply or call personally within 1 working day.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "00000000-0000-0000-0000-000000000025",
+      "name": "Send Team Alert",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        -100
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "## Patient Collections Follow-Up V2: reply detection\nPolls the billing inbox for replies whose subject carries a bill number, classifies them, pauses reminders in the AR sheet, and alerts a person only when needed.\n\n**Before running:** replace REPLACE_WITH_SHEET_ID and REPLACE_WITH_MANAGER_EMAIL, attach credentials. Replies can contain health details: restrict the Replies Log tab.",
+        "height": 200,
+        "width": 700,
+        "color": 5
+      },
+      "id": "00000000-0000-0000-0000-000000000026",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1400,
+        -380
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gemini for Agent 4 Reply Classifier": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent 4 Reply Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parser Agent 4 Reply Classifier": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Agent 4 Reply Classifier",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Reply Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract Invoice Ref",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Invoice Ref": {
+      "main": [
+        [
+          {
+            "node": "Has Invoice Ref?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Invoice Ref?": {
+      "main": [
+        [
+          {
+            "node": "Agent 4 Reply Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent 4 Reply Classifier": {
+      "main": [
+        [
+          {
+            "node": "Compute Pause Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compute Pause Date": {
+      "main": [
+        [
+          {
+            "node": "Update AR Pause",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update AR Pause": {
+      "main": [
+        [
+          {
+            "node": "Log Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Reply": {
+      "main": [
+        [
+          {
+            "node": "Needs Human?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Needs Human?": {
+      "main": [
+        [
+          {
+            "node": "Send Team Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata"
+  },
+  "tags": []
+}

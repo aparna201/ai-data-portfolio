@@ -1,0 +1,8 @@
+{
+  "winner": "gradient_boosting",
+  "train_rows": 1898,
+  "validation_rows": 407,
+  "test_rows": 407,
+  "test_start": "2026-08-12 01:00:00",
+  "test_end": "2026-08-28 23:00:00"
+}

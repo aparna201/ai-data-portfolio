@@ -1,0 +1,251 @@
+[
+ {
+  "role": "billing",
+  "question": "count of unpaid invoices",
+  "table": "invoices",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "sum of unpaid invoices",
+  "table": "invoices",
+  "aggregate": "sum",
+  "sum_column": "amount",
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "total of all paid bills",
+  "table": "invoices",
+  "aggregate": "sum",
+  "sum_column": "amount",
+  "filters": [
+   [
+    "status",
+    "=",
+    "paid"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "list paid invoices",
+  "table": "invoices",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "paid"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "who is booked with Dr Khan",
+  "table": "appointments",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "doctor",
+    "=",
+    "Dr. Khan"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "how many visits are completed",
+  "table": "appointments",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "completed"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "show cancelled appointments",
+  "table": "appointments",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "cancelled"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "appointments for 2026-11-10",
+  "table": "appointments",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "appt_date",
+    "=",
+    "2026-11-10"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "how many patients live in Vizag",
+  "table": "patients",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "city",
+    "=",
+    "Vizag"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "patients from Chennai",
+  "table": "patients",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "city",
+    "=",
+    "Chennai"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "list all patients",
+  "table": "patients",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": []
+ },
+ {
+  "role": "front_desk",
+  "question": "count patients",
+  "table": "patients",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": []
+ },
+ {
+  "role": "billing",
+  "question": "number of invoices",
+  "table": "invoices",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": []
+ },
+ {
+  "role": "front_desk",
+  "question": "how many scheduled appointments with Dr Rao",
+  "table": "appointments",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "scheduled"
+   ],
+   [
+    "doctor",
+    "=",
+    "Dr. Rao"
+   ]
+  ]
+ },
+ {
+  "role": "doctor",
+  "question": "number of appointments on 2026-11-09",
+  "table": "appointments",
+  "aggregate": "count",
+  "sum_column": null,
+  "filters": [
+   [
+    "appt_date",
+    "=",
+    "2026-11-09"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "what do patients owe",
+  "table": "invoices",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "billing",
+  "question": "outstanding balance",
+  "table": "invoices",
+  "aggregate": "sum",
+  "sum_column": "amount",
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "who hasn't paid",
+  "table": "invoices",
+  "aggregate": null,
+  "sum_column": null,
+  "filters": [
+   [
+    "status",
+    "=",
+    "unpaid"
+   ]
+  ]
+ },
+ {
+  "role": "front_desk",
+  "question": "tell me a joke",
+  "refuse": true
+ },
+ {
+  "role": "doctor",
+  "question": "what is the weather today",
+  "refuse": true
+ }
+]

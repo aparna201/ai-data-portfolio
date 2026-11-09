@@ -1,0 +1,4 @@
+strategy,kwh_in_test_block,saving_vs_baseline_pct,annualised_kwh_saved,annualised_usd_saved
+baseline,80279,0.0,0,0
+forecast-planned,79434,1.05,18186,2182
+oracle,79248,1.28,22189,2663

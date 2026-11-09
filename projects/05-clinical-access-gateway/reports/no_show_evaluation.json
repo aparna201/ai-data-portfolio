@@ -1,0 +1,25 @@
+{
+  "rows": {
+    "train": 3600,
+    "val": 1200,
+    "test": 1200
+  },
+  "no_show_rate_train": 0.266,
+  "validation": {
+    "logistic C=0.01": 0.7358,
+    "logistic C=0.1": 0.7361,
+    "logistic C=1.0": 0.7362,
+    "gradient_boosting depth=2 lr=0.05": 0.731,
+    "gradient_boosting depth=2 lr=0.1": 0.7267,
+    "gradient_boosting depth=4 lr=0.05": 0.7215,
+    "gradient_boosting depth=4 lr=0.1": 0.705
+  },
+  "test": {
+    "auc": 0.7293,
+    "top20_captures_no_shows": 0.39,
+    "baseline_always_base_rate_auc": 0.5,
+    "baseline_prior_no_shows_only_auc": 0.5645,
+    "baseline_prior_no_shows_only_top20": 0.272
+  },
+  "chosen": "logistic C=1.0"
+}

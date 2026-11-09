@@ -1,0 +1,12 @@
+invoice_no,patient_name,patient_contact_no,payer_type,payer_org,payer_email,department,invoice_amount,currency,due_date,status,last_reminded_at,reminder_count,paused_until,last_escalated_at
+INV-2026-1001,Test Patient 01,90000 00001,corporate,Acme Textiles Ltd,accounts@acme-textiles.example.com,Dept A,12500,INR,2026-11-20,overdue,,0,,
+INV-2026-1002,Test Patient 02,90000 00002,corporate,Acme Textiles Ltd,accounts@acme-textiles.example.com,Dept B,18500,INR,2026-10-29,overdue,,0,,
+INV-2026-1003,Test Patient 03,90000 00003,corporate,Globex Steel Pvt Ltd,ap@globex-steel.example.com,Dept A,22000,INR,2026-10-19,overdue,2026-10-30,1,,
+INV-2026-1004,Test Patient 04,90000 00004,corporate,Globex Steel Pvt Ltd,ap@globex-steel.example.com,Dept C,31000,INR,2026-09-29,overdue,2026-11-07,2,,
+INV-2026-1005,Test Patient 05,90000 00005,corporate,Hooli Pharma,accounts@hooli-pharma.example.com,Dept B,45000,INR,2026-08-30,overdue,2026-10-25,3,,
+INV-2026-1006,Test Patient 06,90000 00006,corporate,Hooli Pharma,accounts@hooli-pharma.example.com,Dept A,72000,INR,2026-07-30,overdue,2026-10-01,5,,
+INV-2026-1007,Test Patient 07,90000 00007,corporate,Initech Services,billing@initech.example.com,Dept C,26000,INR,2026-08-30,overdue,2026-10-20,3,,2026-11-05
+INV-2026-1008,Test Patient 08,90000 00008,corporate,Initech Services,billing@initech.example.com,Dept B,14000,INR,2026-09-19,overdue,2026-10-15,2,2026-11-20,
+INV-2026-1009,Test Patient 09,90000 00009,corporate,Umbrella Corp,ap@umbrella.example.com,Dept A,9000,INR,2026-09-01,paid_claimed,2026-10-10,2,,
+INV-2026-1010,Test Patient 10,90000 00010,corporate,Umbrella Corp,ap@umbrella.example.com,Dept A,9500,INR,,overdue,,0,,
+INV-2026-1011,Test Patient 11,90000 00011,insurance,Wayne Health Cover,claims@wayne-health.example.com,Dept B,55000,INR,2026-09-29,overdue,,0,,
